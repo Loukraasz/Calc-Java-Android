@@ -78,15 +78,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 Expression express = new ExpressionBuilder(expression.getText().toString()).build();
                 double res = express.evaluate();
-                long longResult = (long) res;
-                if (res == (double) longResult) {
-                    expression.setText((CharSequence) String.valueOf(longResult));
+                String result = String.valueOf(res);
+                String toRound = (result.substring(result.length()-1));
+                if(toRound.equals("0")){
+                    Long longResult = (long) res;
+                    expression.setText((CharSequence)String.valueOf(longResult));
                     expFormat = String.valueOf(expression.getText());
-                } else {
-                    expFormat = "";
                 }
-
-
+                else{
+                expression.setText((CharSequence)String.valueOf(res));
+                expFormat = String.valueOf(expression.getText());
+                }
             }
         });
     }
@@ -133,7 +135,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String [] symbols = new String[]{"+", "-", "*","/"};
             String subExp = expFormat.substring(len-2, len-1);
             String subExpLast = expFormat.substring(len-1, len);
-            System.out.println(subExp);
             for(String symbol : symbols){
                 if(symbol.equals(subExpLast)){
                     for(String sym : symbols){
