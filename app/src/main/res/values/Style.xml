@@ -13,7 +13,7 @@
     <style name="Operators_Button" parent="Conteiner_Button">
         <item name="android:layout_margin">2dp</item>
         <item name="android:background">@drawable/bto_clicked</item>
-        <item name="android:textColor">@color/purple_bright</item>
+        <item name="android:textColor">@color/white</item>
 
     </style>
 

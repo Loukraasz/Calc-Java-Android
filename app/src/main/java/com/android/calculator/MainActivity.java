@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     String expFormat = "";
     private Button numberOne,numberTwo,numberThree,numberFour,numberFive,numberSix,numberSeven,
-            numberEight,numberNine,numberZero, point, minor, plus, multiplicate,divide,equal,erase;
+            numberEight,numberNine,numberZero, point, minor, plus, multiplicate, divide,equal,erase;
     private ImageButton backspace;
     private TextView expression;
 
@@ -76,7 +76,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         equal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Expression express = new ExpressionBuilder(expression.getText().toString()).build();
+                String text = expression.getText().toString();
+                if (text.isEmpty())return;
+                String textLast = text.substring(text.length()-1);
+                String [] symbols = new String[]{"\u002B", "\u2212", "\u00D7","\u00F7"};
+                for(String symbol : symbols){
+                    if(symbol.equals(textLast))return;
+                }
+                for(char c : text.toCharArray()){
+                    if (c == '\u00F7'){
+                        text = text.replace('\u00F7', '/');
+                    }
+                    else if(c =='\u00D7'){
+                        text = text.replace('\u00D7', '*');
+                    }
+                }
+                Expression express = new ExpressionBuilder(text).build();
                 double res = express.evaluate();
                 String result = String.valueOf(res);
                 String toRound = (result.substring(result.length()-1));
@@ -88,8 +103,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else{
                 expression.setText((CharSequence)String.valueOf(res));
                 expFormat = String.valueOf(expression.getText());
+                    }
                 }
-            }
         });
     }
 
@@ -130,9 +145,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         expression.setText(expFormat);
         if(len>1){
-            int l = expFormat.length();
-            String s = expFormat.substring(l-1);
-            String [] symbols = new String[]{"+", "-", "*","/"};
+            String [] symbols = new String[]{"\u002B", "\u2212", "\u00D7","\u00F7"};
             String subExp = expFormat.substring(len-2, len-1);
             String subExpLast = expFormat.substring(len-1, len);
             for(String symbol : symbols){
@@ -188,16 +201,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 formatExp(".");
                 break;
             case R.id.bt_divide:
-                formatExp("/");
+                formatExp("\u00F7");
                 break;
             case R.id.bt_minor:
-                formatExp("-");
+                formatExp("\u2212");
                 break;
             case R.id.bt_plus:
-                formatExp("+") ;
+                formatExp("\u002B") ;
                 break;
             case R.id.bt_multiplicate:
-                formatExp("*");
+                formatExp("\u00D7");
                 break;
 
 

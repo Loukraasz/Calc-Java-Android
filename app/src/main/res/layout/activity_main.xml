@@ -5,22 +5,22 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_Expression"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="214dp"
         android:layout_marginEnd="10dp"
         android:ellipsize="start"
         android:gravity="end"
         android:singleLine="true"
         android:text=""
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="40dp" />
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="bold" />
 
 
 
@@ -38,7 +38,7 @@
             />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_divide"
-            android:text="/"
+            android:text="÷"
             style="@style/Operators_Button"
             />
 
@@ -74,7 +74,7 @@
             />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_multiplicate"
-            android:text="x"
+            android:text='×'
             style="@style/Operators_Button"
             />
 
@@ -145,7 +145,7 @@
             />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_minor"
-            android:text="-"
+            android:text="−"
             style="@style/Operators_Button"
             />
 
