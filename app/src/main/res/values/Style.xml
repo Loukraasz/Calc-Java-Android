@@ -12,15 +12,20 @@
 
     <style name="Operators_Button" parent="Conteiner_Button">
         <item name="android:layout_margin">2dp</item>
-        <item name="android:background">@drawable/bto_clicked</item>
+        <item name="android:background">@drawable/bt_operators</item>
         <item name="android:textColor">@color/white</item>
 
     </style>
 
     <style name="Numbers_Button" parent="Conteiner_Button">
         <item name="android:layout_margin">3dp</item>
-        <item name="android:background">@drawable/bt_clicked</item>
+        <item name="android:background">@drawable/bt_shape</item>
         <item name="android:textColor">@color/white</item>
-
     </style>
+
+    <style name="roundedCorner">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+
+</style>
 </resources>

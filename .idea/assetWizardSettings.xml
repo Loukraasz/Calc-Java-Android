@@ -79,8 +79,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\Lukas\AndroidStudioProjects\Calculator\app\src\main\res\mipmap-anydpi-v26\OIG3.jpeg" />
-                                                <entry key="scalingPercent" value="81" />
+                                                <entry key="imagePath" value="C:\Users\Lukas\AndroidStudioProjects\Calc-Java-Android\app\src\main\res\mipmap-anydpi-v26\icon.png" />
+                                                <entry key="scalingPercent" value="77" />
                                               </map>
                                             </option>
                                           </PersistentState>

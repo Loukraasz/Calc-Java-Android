@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.imageview.ShapeableImageView;
+
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String expFormat = "";
     private Button numberOne,numberTwo,numberThree,numberFour,numberFive,numberSix,numberSeven,
             numberEight,numberNine,numberZero, point, minor, plus, multiplicate, divide,equal,erase;
-    private ImageButton backspace;
+    private ShapeableImageView backspace;
     private TextView expression;
 
     @Override
@@ -89,6 +92,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     else if(c =='\u00D7'){
                         text = text.replace('\u00D7', '*');
+                    }
+                    else if(c == '\u2212'){
+                        text = text.replace('\u2212', '-');
                     }
                 }
                 Expression express = new ExpressionBuilder(text).build();

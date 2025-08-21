@@ -129,7 +129,7 @@
             android:id="@+id/number_one"
             style="@style/Numbers_Button"
             android:layout_weight="1"
-            android:background="@drawable/bt_clicked"
+            android:background="@drawable/bt_shape"
             android:text="1" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/number_two"
@@ -172,17 +172,20 @@
             style="@style/Numbers_Button"
             />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/bt_back"
-            style="@style/Numbers_Button"
-            android:layout_height="92dp"
+            android:layout_width="1dp"
+            android:layout_height="93dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/white"
+            app:shapeAppearanceOverlay="@style/roundedCorner"
             android:contentDescription="delete"
-            android:scaleType="fitStart"
-            android:src="@drawable/baseline_backspace_24"
-            android:text="" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/backspace"
+            android:text=""
+            android:clipToOutline="true"/>
+
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_equal"
