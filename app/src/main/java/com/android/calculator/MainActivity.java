@@ -19,8 +19,8 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    
 
+    char lastButton = 'f';
     String expFormat = "";
     private Button numberOne,numberTwo,numberThree,numberFour,numberFive,numberSix,numberSeven,
             numberEight,numberNine,numberZero, point, minor, plus, multiplicate, divide,equal,erase;
@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         multiplicate.setOnClickListener(this);
         minor.setOnClickListener(this);
 
-
         erase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         equal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                lastButton = 'v';
                 String text = expression.getText().toString();
                 if (text.isEmpty())return;
                 String textLast = text.substring(text.length()-1);
@@ -105,6 +105,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Long longResult = (long) res;
                     expression.setText((CharSequence)String.valueOf(longResult));
                     expFormat = String.valueOf(expression.getText());
+
+
                 }
                 else{
                 expression.setText((CharSequence)String.valueOf(res));
@@ -136,30 +138,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         expression = findViewById(R.id.txt_Expression);
 
     }
-    private String formatExp(String string){
-        expFormat+=string;
+    private String formatExp(String string) {
+        expFormat += string;
+        System.out.println(lastButton);
         int len = expFormat.length();
-        if(len == 1){
-            switch(expFormat){
-                case"+":
-                    expFormat ="";
-                case"*":
-                    expFormat="";
-                case"/":
-                    expFormat="";
+        if (len == 1) {
+            switch (expFormat) {
+                case "\u002B":
+                    expFormat = "";
+                case "\u00D7":
+                    expFormat = "";
+                case "\u00F7":
+                    expFormat = "";
             }
+            expression.setText(expFormat);
         }
-        expression.setText(expFormat);
-        if(len>1){
-            String [] symbols = new String[]{"\u002B", "\u2212", "\u00D7","\u00F7"};
-            String subExp = expFormat.substring(len-2, len-1);
-            String subExpLast = expFormat.substring(len-1, len);
-            for(String symbol : symbols){
-                if(symbol.equals(subExpLast)){
-                    for(String sym : symbols){
-                        if(sym.equals(subExp)){
-                            expFormat=expFormat.substring(0,len-2);
-                            expFormat=expFormat+subExpLast;
+        String[] numbers = new String[]{"1","2","3","4","5","6","7","8","9","0","."};
+        if(lastButton == 'v'){
+            System.out.println(expFormat);
+        }
+        if (len > 1) {
+            String[] symbols = new String[]{"\u002B", "\u2212", "\u00D7", "\u00F7"};
+            String subExp = expFormat.substring(len - 2, len - 1);
+            String subExpLast = expFormat.substring(len - 1, len);
+            for (String symbol : symbols) {
+                if (symbol.equals(subExpLast)) {
+                    for (String sym : symbols) {
+                        if (sym.equals(subExp)) {
+                            expFormat = expFormat.substring(0, len - 2);
+                            expFormat = expFormat + subExpLast;
+
                         }
                     }
                 }
